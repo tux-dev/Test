@@ -1,16 +1,20 @@
 package com.literature.android.test;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import com.literature.android.test.SecondActivity;
 
-public class ScrollingActivity extends AppCompatActivity {
+public class ScrollingActivity extends AppCompatActivity implements Application.ActivityLifecycleCallbacks{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +31,16 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Button goTo = (Button) findViewById(R.id.gotoButton);
+        goTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        Toast.makeText(this, "Hello World !", Toast.LENGTH_LONG).show();
+        getApplication().registerActivityLifecycleCallbacks(this);
     }
 
     @Override
@@ -50,5 +62,41 @@ public class ScrollingActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityCreated(Activity activity, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onActivityStarted(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityResumed(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityPaused(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityStopped(Activity activity) {
+
+        System.out.println("=======> onStop");
+    }
+
+    @Override
+    public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onActivityDestroyed(Activity activity) {
+
     }
 }
