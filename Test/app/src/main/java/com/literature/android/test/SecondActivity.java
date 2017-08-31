@@ -24,7 +24,6 @@ public class SecondActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        System.out.println("new branch");
     }
 
 }
