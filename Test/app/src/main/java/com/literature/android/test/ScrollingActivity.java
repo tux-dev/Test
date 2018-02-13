@@ -43,6 +43,7 @@ public class ScrollingActivity extends AppCompatActivity implements Application.
         });
 
         getApplication().registerActivityLifecycleCallbacks(this);
+        System.out.println("test-revert branch");
     }
 
     @Override
