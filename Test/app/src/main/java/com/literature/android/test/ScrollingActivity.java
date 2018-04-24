@@ -45,6 +45,7 @@ public class ScrollingActivity extends AppCompatActivity implements Application.
         getApplication().registerActivityLifecycleCallbacks(this);
         System.out.println("TEST");
         System.out.println("reset 1");
+        System.out.println("reset 2");
     }
 
     @Override
