@@ -4,10 +4,17 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class SecondActivity extends AppCompatActivity {
+
+    RecyclerView snapRecycler;
+    SnapAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +31,17 @@ public class SecondActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        snapRecycler = (RecyclerView) findViewById(R.id.recycler_snap);
+        setupRecycler();
+    }
+
+    private void setupRecycler() {
+        adapter = new SnapAdapter();
+        snapRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        snapRecycler.setAdapter(adapter);
+//        StartSnapHelper snapHelper = new StartSnapHelper();
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(snapRecycler);
     }
 
 }
