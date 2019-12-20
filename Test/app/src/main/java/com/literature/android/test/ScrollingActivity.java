@@ -34,13 +34,6 @@ public class ScrollingActivity extends AppCompatActivity implements Application.
             }
         });
         Button goTo = (Button) findViewById(R.id.gotoButton);
-        goTo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
-                startActivity(intent);
-            }
-        });
 
         getApplication().registerActivityLifecycleCallbacks(this);
         System.out.println("TEST");
