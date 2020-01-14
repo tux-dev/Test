@@ -11,10 +11,37 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
-        release {
+        prod {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.betaDistributionReleaseNotes="CI note from git"
+            ext.betaDistributionGroupAliases="android-testers"
+        }
+
+        stage {
+            applicationIdSuffix ".stage"
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            versionNameSuffix "s"
+        }
+
+        feature {
+            applicationIdSuffix ".feature"
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            versionNameSuffix "f"
+        }
+
+        dev {
+            applicationIdSuffix ".dev"
+            signingConfig signingConfigs.debug
+            debuggable true
+            versionNameSuffix "d"
         }
     }
 }
